@@ -70,11 +70,63 @@ export default function SustainableUtilitiesDashboard() {
   const fetchWaterConsumptionData = () => {
     // This would be an API call in a real implementation
     const mockWaterData = [
-      { id: 1, zone: 'North', lat: 13.0327, lng: 77.5909, consumption: 4500000, perCapita: 125, sustainability: 65 },
-      { id: 2, zone: 'South', lat: 12.9299, lng: 77.6048, consumption: 5200000, perCapita: 145, sustainability: 52 },
-      { id: 3, zone: 'East', lat: 12.9784, lng: 77.6408, consumption: 3800000, perCapita: 115, sustainability: 78 },
-      { id: 4, zone: 'West', lat: 12.9715, lng: 77.5750, consumption: 4100000, perCapita: 130, sustainability: 71 },
-      { id: 5, zone: 'Central', lat: 12.9716, lng: 77.5946, consumption: 2900000, perCapita: 95, sustainability: 82 },
+      { id: 1, zone: 'Cauvery Stage 1', lat: 12.9716, lng: 77.5946, consumption: 4500000, perCapita: 125, sustainability: 65 },
+      { id: 2, zone: 'Cauvery Stage 2', lat: 12.9716, lng: 77.5946, consumption: 5200000, perCapita: 145, sustainability: 52 },
+      { id: 3, zone: 'Cauvery Stage 3', lat: 12.9716, lng: 77.5946, consumption: 3800000, perCapita: 115, sustainability: 78 },
+      { id: 4, zone: 'Cauvery Stage 4 Phase 1', lat: 12.9716, lng: 77.5946, consumption: 4100000, perCapita: 130, sustainability: 71 },
+      { id: 5, zone: 'Cauvery Stage 4 Phase 2', lat: 12.9716, lng: 77.5946, consumption: 2900000, perCapita: 95, sustainability: 82 },
+      { id: 6, zone: 'Nethajinagar', lat: 12.9825, lng: 77.5480, consumption: 4000000, perCapita: 120, sustainability: 70 },
+      { id: 7, zone: 'NTY Layout', lat: 12.9820, lng: 77.5470, consumption: 4200000, perCapita: 125, sustainability: 68 },
+      { id: 8, zone: 'Gandhinagar', lat: 12.9780, lng: 77.5720, consumption: 3900000, perCapita: 110, sustainability: 72 },
+      { id: 9, zone: 'Mahalakshmi Layout', lat: 13.0050, lng: 77.5450, consumption: 3600000, perCapita: 100, sustainability: 75 },
+      { id: 10, zone: '4th Block Nandini Layout', lat: 13.0150, lng: 77.5300, consumption: 3800000, perCapita: 105, sustainability: 73 },
+      { id: 11, zone: 'Nagamma Nagar', lat: 12.9610, lng: 77.5500, consumption: 3700000, perCapita: 105, sustainability: 70 },
+      { id: 12, zone: 'Telecom Layout', lat: 13.0400, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 68 },
+      { id: 13, zone: 'Laxmanpuri Slum', lat: 12.9610, lng: 77.5500, consumption: 4200000, perCapita: 120, sustainability: 65 },
+      { id: 14, zone: 'J C Nagar', lat: 13.0050, lng: 77.5900, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 15, zone: 'BHEL Layout', lat: 12.9800, lng: 77.5600, consumption: 3800000, perCapita: 105, sustainability: 72 },
+      { id: 16, zone: 'Keshava Nagar', lat: 12.9900, lng: 77.5600, consumption: 3900000, perCapita: 110, sustainability: 71 },
+      { id: 17, zone: 'Byatarayanapura', lat: 13.0800, lng: 77.5700, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 18, zone: 'Kumarapark East', lat: 12.9900, lng: 77.5700, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 19, zone: 'Athmiya Geleyara Balaga', lat: 12.9900, lng: 77.5600, consumption: 3800000, perCapita: 105, sustainability: 72 },
+      { id: 20, zone: 'Nandini Layout', lat: 13.0150, lng: 77.5300, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 21, zone: 'K P Agrahara', lat: 12.9800, lng: 77.5400, consumption: 3900000, perCapita: 110, sustainability: 71 },
+      { id: 22, zone: 'Kasturba Nagar', lat: 12.9500, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 23, zone: 'Vasanthanagar', lat: 12.9900, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 24, zone: 'Sri Ramnagar', lat: 13.0000, lng: 77.5800, consumption: 3900000, perCapita: 110, sustainability: 71 },
+      { id: 25, zone: 'Srinivasa Nagar', lat: 12.9500, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 26, zone: 'New Binny Layout', lat: 12.9800, lng: 77.5400, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 27, zone: 'New Guddadahalli', lat: 12.9600, lng: 77.5400, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 28, zone: 'Abshot Layout', lat: 12.9900, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 29, zone: 'Muneswara Block', lat: 12.9700, lng: 77.5500, consumption: 3900000, perCapita: 110, sustainability: 71 },
+      { id: 30, zone: 'Jaimaruthi Nagar & Badavane', lat: 12.9800, lng: 77.5500, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 31, zone: 'Raghavendra Colony', lat: 12.9500, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 32, zone: 'Maruthinagar', lat: 12.9500, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 33, zone: 'Chakravathi Layout', lat: 12.9500, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 34, zone: 'J S Nagar', lat: 12.9500, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 35, zone: 'Sakamma Layout', lat: 12.9500, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 36, zone: 'Tippunagar', lat: 12.9500, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 37, zone: 'Shamanna Nagar', lat: 12.9500, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 38, zone: 'High Grounds', lat: 12.9800, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 39, zone: 'WOC Road 2nd Stage and 2nd Phase', lat: 12.9900, lng: 77.5600, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 40, zone: 'Narasimha Swamy Layout', lat: 12.9500, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 41, zone: 'Anandapura', lat: 13.0000, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 42, zone: 'Bapuji Nagar', lat: 12.9500, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 43, zone: 'Sampangiramnagar', lat: 12.9600, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 44, zone: 'Saraswathi Puram', lat: 12.9500, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 45, zone: 'Muneshwaranagara', lat: 12.9500, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 46, zone: 'Chamarajpet', lat: 12.9600, lng: 77.5700, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 47, zone: 'Joly Mohalla', lat: 12.9600, lng: 77.5700, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 48, zone: 'CKC Garden', lat: 12.9600, lng: 77.5700, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 49, zone: 'Mahalakshmi Layout Further Extension', lat: 13.0100, lng: 77.5400, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 50, zone: 'Jnanajyothinagar', lat: 12.9500, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 51, zone: 'Ramchandra Agrahara', lat: 12.9500, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 52, zone: 'PVR Road', lat: 12.9500, lng: 77.5800, consumption: 3800000, perCapita: 105, sustainability: 72 },
+      { id: 53, zone: 'KS Garden', lat: 12.9500, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 54, zone: 'Bhovi Playa', lat: 12.9500, lng: 77.5800, consumption: 4200000, perCapita: 120, sustainability: 68 },
+      { id: 55, zone: 'Jnanaganganagar', lat: 12.9500, lng: 77.5800, consumption: 4000000, perCapita: 115, sustainability: 70 },
+      { id: 56, zone: 'Adarshanagar', lat: 12.9500, lng: 77.5800, consumption: 3800000, perCapita: 105, sustainability: 72 },
+      { id: 57, zone: 'Central', lat: 12.9716, lng: 77.5946, consumption: 2900000, perCapita: 95, sustainability: 82 },
     ];
     
     setWaterConsumptionData(mockWaterData);
@@ -200,10 +252,10 @@ export default function SustainableUtilitiesDashboard() {
           key={`${utilityType}-${item.id}`}
           center={[item.lat, item.lng]}
           pathOptions={{ radius, fillColor: showSustainabilityScore ? getSustainabilityColor(item.sustainability) : color }}
-          //fillOpacity={0.7}
-          //stroke={true}
-          //color={color}
-          //weight={1}
+          fillOpacity={0.7}
+          stroke={true}
+          color={color}
+          weight={1}
           eventHandlers={{
             click: () => handleZoneSelect(item)
           }}
@@ -828,3 +880,20 @@ export default function SustainableUtilitiesDashboard() {
   </main>
   </div>
 )};
+/**
+ * _id	Present Supply from Cauvery source	1350 MLD
+1	Present population served	8.5 Millions
+2	Area of water supply served	570 sq. kms
+3	House service connections	8.65 lakhs
+4	Total length of water supply pipelines	8,746 kms
+5	Pipe diameters??? range	100 to 1800 mm
+6	Number of Ground Level Reservoirs	57 ( 885 ML)
+7	Number of Over Head Tanks	36 (33 ML)
+8	Booster pumping stations	62 nos
+9	Public taps providing free water	7,477 nos
+10	Water tanker lorries	62 nos
+11	Quantity of water supplied/month	42,200 ML
+12	Average per capita consumption	65 L/day
+13	Average cost of water	28 Rs/kL
+
+ */
