@@ -500,7 +500,7 @@ export default function SustainableUtilitiesDashboard() {
                 >
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; OpenStreetMap contributors'
+                    attribution='&copy; Bengaluru'
                   />
 
                   
@@ -617,28 +617,28 @@ export default function SustainableUtilitiesDashboard() {
                 </h2>
               </div>
               <div className="p-4">
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart 
-                    data={activeTab === 'water' ? processedWaterData : processedElectricityData}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="zone" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar 
-                      dataKey="consumption" 
-                      name={activeTab === 'water' ? 'Water Consumption (KL)' : 'Electricity Consumption (kWh)'} 
-                      fill={activeTab === 'water' ? colors.water : colors.electricity} 
-                    >
-                      {(activeTab === 'water' ? processedWaterData : processedElectricityData).map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={getSustainabilityColor(entry.sustainability)} />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
+  <ResponsiveContainer width="100%" height={300}>
+    <BarChart 
+      data={activeTab === 'water' ? processedWaterData.slice(0, 10) : processedElectricityData.slice(0, 10)}
+      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="zone" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Bar 
+        dataKey="consumption" 
+        name={activeTab === 'water' ? 'Water Consumption (KL)' : 'Electricity Consumption (kWh)'} 
+        fill={activeTab === 'water' ? colors.water : colors.electricity} 
+      >
+        {(activeTab === 'water' ? processedWaterData.slice(0, 10) : processedElectricityData.slice(0, 10)).map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={getSustainabilityColor(entry.sustainability)} />
+        ))}
+      </Bar>
+    </BarChart>
+  </ResponsiveContainer>
+</div>
             </div>
             
             <div className="bg-white rounded-lg shadow-md">
@@ -648,28 +648,27 @@ export default function SustainableUtilitiesDashboard() {
                 </h2>
               </div>
               <div className="p-4">
-                <ResponsiveContainer width="100%" height={300}>
-                  <PieChart>
-                    <Pie
-                      data={activeTab === 'water' ? processedWaterData : processedElectricityData}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={false}
-                      outerRadius={100}
-                      fill="#8884d8"
-                      dataKey="sustainability"
-                      nameKey="zone"
-                      label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                    >
-                      {(activeTab === 'water' ? processedWaterData : processedElectricityData).map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={getSustainabilityColor(entry.sustainability)} />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                    <Legend />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
+  <ResponsiveContainer width="100%" height={300}>
+    <PieChart>
+      <Pie
+        data={activeTab === 'water' ? processedWaterData.slice(0, 10) : processedElectricityData.slice(0, 10)}
+        cx="50%"
+        cy="50%"
+        labelLine={false}
+        outerRadius={100}
+        fill="#8884d8"
+        dataKey="sustainability"
+        nameKey="zone"
+        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+      >
+        {(activeTab === 'water' ? processedWaterData.slice(0, 10) : processedElectricityData.slice(0, 10)).map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={getSustainabilityColor(entry.sustainability)} />
+        ))}
+      </Pie>
+      <Tooltip />
+    </PieChart>
+  </ResponsiveContainer>
+</div>
             </div>
           </div>
         )}
