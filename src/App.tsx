@@ -15,6 +15,8 @@ interface GeoDataItem {
   sustainability: number;
 }
 
+
+
 // Main App Component
 export default function SustainableUtilitiesDashboard() {
   // State for the active utility view (water or electricity)
@@ -28,6 +30,11 @@ export default function SustainableUtilitiesDashboard() {
   const [waterConservationFactor, setWaterConservationFactor] = useState(0);
   const [energyEfficiencyFactor, setEnergyEfficiencyFactor] = useState(0);
   
+  const formatUnit = (value: number): string => {
+    const utilityType = activeTab === 'water' ? 'Water' : 'Electricity';
+    return `${(value / 1000000).toFixed(2)} ${utilityType}L`;
+  };
+
   // State for map data
   interface WaterConsumption {
     id: number;
@@ -135,11 +142,41 @@ export default function SustainableUtilitiesDashboard() {
   const fetchElectricityConsumptionData = () => {
     // This would be an API call in a real implementation
     const mockElectricityData = [
-      { id: 1, zone: 'North', lat: 13.0327, lng: 77.5909, consumption: 8500000, perCapita: 235, sustainability: 58 },
-      { id: 2, zone: 'South', lat: 12.9299, lng: 77.6048, consumption: 9200000, perCapita: 255, sustainability: 49 },
-      { id: 3, zone: 'East', lat: 12.9784, lng: 77.6408, consumption: 7500000, perCapita: 225, sustainability: 64 },
-      { id: 4, zone: 'West', lat: 12.9715, lng: 77.5750, consumption: 8000000, perCapita: 240, sustainability: 61 },
-      { id: 5, zone: 'Central', lat: 12.9716, lng: 77.5946, consumption: 6200000, perCapita: 205, sustainability: 76 },
+      { id: 1, zone: 'WHITEFIELD', lat: 12.96672724, lng: 77.74846312, consumption: 8500000, perCapita: 235, sustainability: 58 },
+      { id: 2, zone: 'VIDHANA SOUDHA', lat: 12.97545574, lng: 77.57542405, consumption: 9200000, perCapita: 255, sustainability: 49 },
+      { id: 3, zone: 'JALAHALLI', lat: 13.10396843, lng: 77.52203297, consumption: 7500000, perCapita: 225, sustainability: 64 },
+      { id: 4, zone: 'RAJAJINAGAR', lat: 12.98053097, lng: 77.52857634, consumption: 8000000, perCapita: 240, sustainability: 61 },
+      { id: 5, zone: 'TIPTUR', lat: 13.25269796, lng: 76.49300996, consumption: 6200000, perCapita: 205, sustainability: 76 },
+      { id: 6, zone: 'KANAKAPURA', lat: 12.53318508, lng: 77.41727269, consumption: 7000000, perCapita: 230, sustainability: 62 },
+      { id: 7, zone: 'R R NAGAR', lat: 12.92488015, lng: 77.52021025, consumption: 7800000, perCapita: 245, sustainability: 59 },
+      { id: 8, zone: 'CHANDAPURA', lat: 12.71560352, lng: 77.70100397, consumption: 6900000, perCapita: 220, sustainability: 63 },
+      { id: 9, zone: 'CHIKKABALAPURA', lat: 13.56721035, lng: 77.49162508, consumption: 7300000, perCapita: 235, sustainability: 60 },
+      { id: 10, zone: 'NELAMANGALA', lat: 13.28505426, lng: 77.54840132, consumption: 8200000, perCapita: 250, sustainability: 57 },
+      { id: 11, zone: 'CHITRADURGA', lat: 14.25165747, lng: 76.4917188, consumption: 9500000, perCapita: 260, sustainability: 55 },
+      { id: 12, zone: 'MADHUGIRI', lat: 13.74447218, lng: 76.90305552, consumption: 8700000, perCapita: 270, sustainability: 54 },
+      { id: 13, zone: 'KGF', lat: 13.0437091, lng: 78.28602525, consumption: 10000000, perCapita: 280, sustainability: 53 },
+      { id: 14, zone: 'KOLAR', lat: 13.13819204, lng: 78.13377304, consumption: 10500000, perCapita: 290, sustainability: 52 },
+      { id: 15, zone: 'RAMANAGARA', lat: 12.68633689, lng: 77.22797006, consumption: 9200000, perCapita: 260, sustainability: 58 },
+      { id: 16, zone: 'YALAHANKA', lat: 13.07167259, lng: 77.79519256, consumption: 9500000, perCapita: 270, sustainability: 57 },
+      { id: 17, zone: 'CHINTHAMANI', lat: 13.38430514, lng: 78.07893194, consumption: 9800000, perCapita: 280, sustainability: 56 },
+      { id: 18, zone: 'DAVANAGERE', lat: 14.46133085, lng: 75.9161373, consumption: 11000000, perCapita: 290, sustainability: 54 },
+      { id: 19, zone: 'HARIHARA', lat: 14.57045163, lng: 75.88026952, consumption: 11500000, perCapita: 300, sustainability: 53 },
+      { id: 20, zone: 'HIRIYUR', lat: 14.14411658, lng: 76.64365097, consumption: 12000000, perCapita: 310, sustainability: 52 },
+      { id: 21, zone: 'MALLESHWARAM', lat: 13.01438819, lng: 77.5690845, consumption: 10500000, perCapita: 280, sustainability: 58 },
+      { id: 22, zone: 'HEBBAL', lat: 13.12098872, lng: 77.59589507, consumption: 11000000, perCapita: 290, sustainability: 57 },
+      { id: 23, zone: 'HSR LAYOUT', lat: 12.8815713, lng: 77.62510473, consumption: 10000000, perCapita: 270, sustainability: 59 },
+      { id: 24, zone: 'JAYANAGARA', lat: 12.92030876, lng: 77.56597568, consumption: 10500000, perCapita: 280, sustainability: 58 },
+      { id: 25, zone: 'KENGERI', lat: 12.88053578, lng: 77.48181654, consumption: 10000000, perCapita: 270, sustainability: 59 },
+      { id: 26, zone: 'KORAMANGALA', lat: 12.94348118, lng: 77.66896016, consumption: 11000000, perCapita: 290, sustainability: 57 },
+      { id: 27, zone: 'PEENYA', lat: 13.03623979, lng: 77.52138267, consumption: 10500000, perCapita: 280, sustainability: 58 },
+      { id: 28, zone: 'INDIRANAGARA', lat: 13.00152472, lng: 77.67237352, consumption: 10000000, perCapita: 270, sustainability: 59 },
+      { id: 29, zone: 'SHIVAJINAGAR', lat: 13.03196136, lng: 77.64831458, consumption: 10500000, perCapita: 280, sustainability: 58 },
+      { id: 30, zone: 'TUMKUR', lat: 13.02524581, lng: 77.03236304, consumption: 9000000, perCapita: 260, sustainability: 60 },
+      { id: 31, zone: 'TUMKUR', lat: 13.35485874, lng: 77.10565022, consumption: 9500000, perCapita: 270, sustainability: 59 },
+      { id: 32, zone: 'KOLAR', lat: 13.12791697, lng: 78.15828825, consumption: 10000000, perCapita: 280, sustainability: 58 },
+      { id: 33, zone: 'N', lat: 12.96672724, lng: 77.74846312, consumption: 8500000, perCapita: 235, sustainability: 58 },
+      { id: 34, zone: 'N', lat: 12.97545574, lng: 77.57542405, consumption: 9200000, perCapita: 255, sustainability: 49 },
+      { id: 35, zone: 'N', lat: 13.10396843, lng: 77.52203297, consumption: 7500000, perCapita: 225, sustainability: 64 },
     ];
     
     setElectricityConsumptionData(mockElectricityData);
@@ -251,7 +288,10 @@ export default function SustainableUtilitiesDashboard() {
         <CircleMarker
           key={`${utilityType}-${item.id}`}
           center={[item.lat, item.lng]}
-          pathOptions={{ radius, fillColor: showSustainabilityScore ? getSustainabilityColor(item.sustainability) : color }}
+          pathOptions={{
+            radius,
+            fillColor: showSustainabilityScore ? getSustainabilityColor(item.sustainability) : color,
+          }}
           fillOpacity={0.7}
           stroke={true}
           color={color}
@@ -263,7 +303,7 @@ export default function SustainableUtilitiesDashboard() {
           <Popup>
             <div className="p-2">
               <h3 className="font-bold">{item.zone} Zone</h3>
-              <p>Consumption: {(item.consumption / 1000000).toFixed(2)} ML</p>
+              <p>Consumption: {formatUnit(item.consumption)}</p>
               <p>Per Capita: {item.perCapita} L</p>
               <p>Sustainability Score: {item.sustainability}%</p>
               {item.isSimulated && (
@@ -273,6 +313,8 @@ export default function SustainableUtilitiesDashboard() {
           </Popup>
         </CircleMarker>
       );
+      
+      
     });
   };
 
