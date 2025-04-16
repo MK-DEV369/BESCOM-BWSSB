@@ -31,7 +31,7 @@ export default function SustainableUtilitiesDashboard() {
   const [energyEfficiencyFactor, setEnergyEfficiencyFactor] = useState(0);
   
   const formatUnit = (value: number): string => {
-    const utilityType = activeTab === 'water' ? 'Water' : 'Electricity';
+    const utilityType = activeTab === 'water' ? 'mL' : 'kWh';
     return `${(value / 1000000).toFixed(2)} ${utilityType}L`;
   };
 
@@ -304,7 +304,7 @@ export default function SustainableUtilitiesDashboard() {
             <div className="p-2">
               <h3 className="font-bold">{item.zone} Zone</h3>
               <p>Consumption: {formatUnit(item.consumption)}</p>
-              <p>Per Capita: {item.perCapita} L</p>
+              <p>Per Capita: {item.perCapita}</p>
               <p>Sustainability Score: {item.sustainability}%</p>
               {item.isSimulated && (
                 <p className="text-green-600 mt-2">Simulated data with conservation measures</p>
@@ -519,76 +519,75 @@ export default function SustainableUtilitiesDashboard() {
         )}
 
         {/* Map and Chart Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Map Section */}
-          <div className={`bg-white rounded-lg shadow-md ${activeTab === 'overview' ? 'lg:col-span-2' : 'lg:col-span-3'}`}>
-            <div className="p-4 border-b">
-              <h2 className="text-lg font-semibold text-gray-700">
-                {activeTab === 'water' ? 'BWSSB Water Consumption Map' : 
-                activeTab === 'electricity' ? 'BESCOM Electricity Consumption Map' :
-                'Bangalore Utilities Consumption Map'}
-              </h2>
-              {simulationEnabled && (
-                <p className="text-sm text-teal-600">Simulation Mode Active: Showing projected data with conservation measures</p>
-              )}
-            </div>
-            
-            <div className="p-4 w-screen border">
-              <div style={{ height: '500px', width: '80%'}} className="mx-auto rounded overflow-hidden border">
-                <MapContainer
-                  center={[12.9710, 77.5943]} 
-                  zoom={12} 
-                  style={{ height: '100%', width: '100%' }}
-                >
-                  <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; Bengaluru'
-                  />
+        <div className="grid py-10 grid-cols-1 overflow-hidden lg:grid-cols-3 gap-6">
+  {/* Map Section */}
+  <div className={`bg-white rounded-lg justify-center shadow-md ${activeTab === 'overview' ? 'lg:col-span-2' : 'lg:col-span-3'}`}>
+    <div className="p-4 border-b justify-center">
+      <h2 className="text-lg font-semibold text-gray-700">
+        {activeTab === 'water' ? 'BWSSB Water Consumption Map' : 
+        activeTab === 'electricity' ? 'BESCOM Electricity Consumption Map' :
+        'Bangalore Utilities Consumption Map'}
+      </h2>
+      {simulationEnabled && (
+        <p className="text-sm text-teal-600">Simulation Mode Active: Showing projected data with conservation measures</p>
+      )}
+    </div>
+    
+    <div className="p-4 justify-center">
+      <div className="rounded overflow-hidden" style={{ height: '500px', width: '100%' }}>
+        <MapContainer
+          center={[12.9710, 77.5943]} 
+          zoom={12} 
+          style={{ height: '100%', width: '100%' }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; Bengaluru'
+          />
 
-                  
-                  {/* Water Consumption Markers */}
-                  {(activeTab === 'water' || activeTab === 'overview') && 
-                    renderConsumptionMarkers(processedWaterData, 'water')}
-                  
-                  {/* Electricity Consumption Markers */}
-                  {(activeTab === 'electricity' || activeTab === 'overview') && 
-                    renderConsumptionMarkers(processedElectricityData, 'electricity')}
-                </MapContainer>
-                </div>
-              </div>
-              
-              <div className="mt-4 flex flex-wrap items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center">
-                    <div className="w-4 h-4 rounded-full bg-blue-500 mr-2"></div>
-                    <span className="text-sm text-gray-700">Water Consumption</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-4 h-4 rounded-full bg-yellow-500 mr-2"></div>
-                    <span className="text-sm text-gray-700">Electricity Consumption</span>
-                  </div>
-                </div>
-                
-                {showSustainabilityScore && (
-                  <div className="flex items-center space-x-2 mt-2 md:mt-0">
-                    <span className="text-sm text-gray-700">Sustainability Score:</span>
-                    <div className="flex items-center">
-                      <div className="w-3 h-3 rounded-full bg-red-500 mr-1"></div>
-                      <span className="text-xs text-gray-600">Poor</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-3 h-3 rounded-full bg-yellow-500 mr-1"></div>
-                      <span className="text-xs text-gray-600">Fair</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-3 h-3 rounded-full bg-green-500 mr-1"></div>
-                      <span className="text-xs text-gray-600">Good</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+          {/* Water Consumption Markers */}
+          {(activeTab === 'water' || activeTab === 'overview') && 
+            renderConsumptionMarkers(processedWaterData, 'water')}
+          
+          {/* Electricity Consumption Markers */}
+          {(activeTab === 'electricity' || activeTab === 'overview') && 
+            renderConsumptionMarkers(processedElectricityData, 'electricity')}
+        </MapContainer>
+      </div>
+    </div>
+    
+    <div className="mt-4 flex flex-wrap items-center justify-between">
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center">
+          <div className="w-4 h-4 rounded-full bg-blue-500 mr-2"></div>
+          <span className="text-sm text-gray-700">Water Consumption</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-4 h-4 rounded-full bg-yellow-500 mr-2"></div>
+          <span className="text-sm text-gray-700">Electricity Consumption</span>
+        </div>
+      </div>
+      
+      {showSustainabilityScore && (
+        <div className="flex items-center space-x-2 mt-2 md:mt-0">
+          <span className="text-sm text-gray-700">Sustainability Score:</span>
+          <div className="flex items-center">
+            <div className="w-3 h-3 rounded-full bg-red-500 mr-1"></div>
+            <span className="text-xs text-gray-600">Poor</span>
           </div>
+          <div className="flex items-center">
+            <div className="w-3 h-3 rounded-full bg-yellow-500 mr-1"></div>
+            <span className="text-xs text-gray-600">Fair</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-3 h-3 rounded-full bg-green-500 mr-1"></div>
+            <span className="text-xs text-gray-600">Good</span>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
 
           {/* Charts Section - Only shown in overview tab */}
           {activeTab === 'overview' && (
@@ -921,20 +920,3 @@ export default function SustainableUtilitiesDashboard() {
   </main>
   </div>
 )};
-/**
- * _id	Present Supply from Cauvery source	1350 MLD
-1	Present population served	8.5 Millions
-2	Area of water supply served	570 sq. kms
-3	House service connections	8.65 lakhs
-4	Total length of water supply pipelines	8,746 kms
-5	Pipe diameters??? range	100 to 1800 mm
-6	Number of Ground Level Reservoirs	57 ( 885 ML)
-7	Number of Over Head Tanks	36 (33 ML)
-8	Booster pumping stations	62 nos
-9	Public taps providing free water	7,477 nos
-10	Water tanker lorries	62 nos
-11	Quantity of water supplied/month	42,200 ML
-12	Average per capita consumption	65 L/day
-13	Average cost of water	28 Rs/kL
-
- */
