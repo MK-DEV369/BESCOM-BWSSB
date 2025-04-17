@@ -31,8 +31,8 @@ export default function SustainableUtilitiesDashboard() {
   const [energyEfficiencyFactor, setEnergyEfficiencyFactor] = useState(0);
   
   const formatUnit = (value: number): string => {
-    const utilityType = activeTab === 'water' ? 'mL' : 'kWh';
-    return `${(value / 1000000).toFixed(2)} ${utilityType}L`;
+    const utilityType = activeTab === 'water' ? 'L' : 'kWh';
+    return `${(value / 1000000).toFixed(2)} ${utilityType}`;
   };
 
   // State for map data
