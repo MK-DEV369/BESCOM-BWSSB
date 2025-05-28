@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+    
+    .poster {
+      width: 420mm; /* A3 width */
+      height: 297mm; /* A3 height */
+      background: linear-gradient(to bottom right, #ffffff, #e6f7ff);
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto auto auto;
+      grid-gap: 15px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    
+    .header {
+      grid-column: 1 / 4;
+      background: linear-gradient(to right, #1a5276, #2e86c1);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .title {
+      font-size: 40px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .authors {
+      font-size: 16px;
+      max-width: 50%;
+    }
+    
+    .intro {
+      grid-column: 1 / 2;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .why-chose {
+      grid-column: 2 / 3;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .system-arch {
+      grid-column: 3 / 4;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .intelligence {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .features {
+      grid-column: 2 / 3;
+      grid-row: 3 / 4;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .sdg {
+      grid-column: 3 / 4;
+      grid-row: 3 / 4;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .conclusion {
+      grid-column: 1 / 3;
+      grid-row: 4 / 5;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .resources {
+      grid-column: 3 / 4;
+      grid-row: 4 / 5;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    h2 {
+      color: #1a5276;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 5px;
+      margin-top: 0;
+    }
+    
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+    
+    .section-img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+    
+    .icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .sdg-icons {
+      display: flex;
+      justify-content: space-around;
+      margin: 10px 0;
+    }
+    
+    .sdg-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    
+    th, td {
+      border: 1px solid #ddd;
+      padding: 4px;
+      text-align: left;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+    
+    ul {
+      margin: 5px 0;
+      padding-left: 20px;
+    }
+    
+    .demo-link {
+      text-align: center;
+      background-color: #1a5276;
+      color: white;
+      padding: 8px;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <!-- Header Section -->
+    <div class="header">
+      <div>
+        <div class="title">Bangalore Utilities Consumption and<br>Sustainability Dashboard</div>
+        <div>Full Stack Project</div>
+      </div>
+      <img src="/api/placeholder/120/120" alt="Project Logo" class="logo">
+      <div class="authors">
+        <strong>By:</strong><br>
+        YUG SHIVHARE (1RV23AI125)<br>
+        KUMAR YASH (1RV23AI047)<br>
+        L MORYAKANTHA (1RV24AI406)<br>
+        VIJAYKUMAR B K (1RV23AI118)
+      </div>
+    </div>
+    
+    <!-- Introduction Section -->
+    <div class="intro">
+      <h2>INTRODUCTION</h2>
+      <img src="/api/placeholder/300/120" alt="Bangalore City Skyline" class="section-img">
+      <p>Bangalore, one of India's fastest-growing cities, faces increasing pressure on its water and electricity resources.</p>
+      <p>💡 This project introduces a smart dashboard to track, analyze, and optimize utility consumption in real time.</p>
+      <p>🌍 It aligns with the UN Sustainable Development Goals (SDGs), promoting efficient resource use, transparency, and data-driven decision making.</p>
+      <p>📊 By combining IoT, predictive analytics, and interactive simulations, the dashboard empowers citizens, utilities, and policymakers to build a sustainable urban future.</p>
+    </div>
+    
+    <!-- Why We Chose This Project -->
+    <div class="why-chose">
+      <h2>WHY WE CHOSE THIS PROJECT</h2>
+      <img src="/api/placeholder/300/120" alt="Urban Challenges Illustration" class="section-img">
+      <p><strong>Urban Relevance</strong><br>
+      Bangalore faces real urban challenges—water scarcity, power outages, and rapid population growth—making it ideal for a smart utilities solution.</p>
+      
+      <p><strong>Data Accessibility</strong><br>
+      Open data and APIs from BWSSB, BESCOM, and climate sources enabled a real-time, analytics-driven approach.</p>
+      
+      <p><strong>🌐 SDG Impact</strong><br>
+      We aligned the project with key Sustainable Development Goals:</p>
+      <ul>
+        <li>SDG 6 – Clean Water</li>
+        <li>SDG 7 – Affordable & Clean Energy</li>
+        <li>SDG 11 – Sustainable Cities & Communities</li>
+        <li>SDG 13 – Climate Action</li>
+      </ul>
+      
+      <p><strong>Full-Stack & Tech Focused</strong><br>
+      The project combines IoT, machine learning, geospatial analytics, and dashboard design, offering a real-world platform to apply full-stack dev skills.</p>
+    </div>
+    
+    <!-- System Architecture -->
+    <div class="system-arch">
+      <h2>SYSTEM ARCHITECTURE & KEY TECHNOLOGIES</h2>
+      <img src="/api/placeholder/300/120" alt="System Architecture Diagram" class="section-img">
+      <p><strong>Full Stack Architecture</strong></p>
+      <ul>
+        <li>Frontend: React.js – responsive and dynamic UI</li>
+        <li>Backend: Node.js – API handling and logic</li>
+        <li>Hosting: Vercel – fast, serverless deployment</li>
+      </ul>
+      
+      <p><strong>Data Integration</strong></p>
+      <ul>
+        <li>Real-time data from BWSSB, BESCOM, and IoT sensors</li>
+        <li>Climate APIs for weather-aware resource planning</li>
+      </ul>
+      
+      <p><strong>Geospatial Analysis</strong></p>
+      <ul>
+        <li>Leaflet.js for interactive maps</li>
+        <li>Zone-wise heatmaps to detect leaks and prioritize action</li>
+      </ul>
+      
+      <p><strong>User roles:</strong></p>
+      <ul>
+        <li>Citizens 👥 → Access personalized usage stats, conservation tips</li>
+        <li>Utility Providers ⚙️ → Leak maps, non-revenue reports, predictive maintenance</li>
+        <li>Policymakers 🏛️ → SDG dashboard, investment forecasts</li>
+      </ul>
+      
+      <p>Data access secured via JWT-based authentication and Firebase Auth<br>
+      Audit logging through MongoDB + LogDNA API</p>
+    </div>
+    
+    <!-- Intelligence & Sustainability Features -->
+    <div class="intelligence">
+      <h2>INTELLIGENCE & SUSTAINABILITY FEATURES</h2>
+      <img src="/api/placeholder/300/120" alt="Machine Learning Models" class="section-img">
+      <p><strong>Simulation & Forecasting</strong></p>
+      <ul>
+        <li>Technologies: Python, SciKit-Learn</li>
+        <li>Built machine learning models to simulate scenarios like:
+          <ul>
+            <li>Population growth</li>
+            <li>Water conservation efforts</li>
+            <li>Energy demand surges</li>
+          </ul>
+        </li>
+        <li>Trained on historical utility data and climate patterns</li>
+        <li>Uses open government datasets + climate APIs for real-world parameter tuning</li>
+      </ul>
+      
+      <p><strong>Dashboards & Analytics</strong></p>
+      <ul>
+        <li>Platform: Power BI</li>
+        <li>Interactive dashboards for:
+          <ul>
+            <li>Real-time utility usage (water & electricity)</li>
+            <li>Zone-wise heatmaps</li>
+            <li>Trend analysis (daily/monthly/yearly)</li>
+          </ul>
+        </li>
+        <li>SDG tracking using custom visuals and filters</li>
+        <li>Integrated with BWSSB + BESCOM APIs to fetch live data</li>
+      </ul>
+    </div>
+    
+    <!-- Key Features -->
+    <div class="features">
+      <h2>KEY FEATURES</h2>
+      <img src="/api/placeholder/300/120" alt="Dashboard Features" class="section-img">
+      <div class="feature-item">
+        <img src="/api/placeholder/20/20" alt="Icon" class="icon">
+        <p><strong>Real-Time Utility Monitoring:</strong> IoT-powered tracking of BWSSB water and BESCOM electricity consumption</p>
+      </div>
+      
+      <div class="feature-item">
+        <img src="/api/placeholder/20/20" alt="Icon" class="icon">
+        <p><strong>SDG Progress Tracking:</strong> Automated alignment with UN Sustainable Development Goals 6 (Water) & 7 (Energy)</p>
+      </div>
+      
+      <div class="feature-item">
+        <img src="/api/placeholder/20/20" alt="Icon" class="icon">
+        <p><strong>Geospatial Analysis:</strong> Zone-wise heatmaps for targeted resource allocation and leak detection</p>
+      </div>
+      
+      <div class="feature-item">
+        <img src="/api/placeholder/20/20" alt="Icon" class="icon">
+        <p><strong>Scenario Simulation:</strong> Predictive modeling for conservation measures and climate scenarios</p>
+      </div>
+      
+      <div class="feature-item">
+        <img src="/api/placeholder/20/20" alt="Icon" class="icon">
+        <p><strong>Stakeholder Engagement:</strong> Role-based insights for citizens, utilities, and policymakers</p>
+      </div>
+      
+      <div class="feature-item">
+        <img src="/api/placeholder/20/20" alt="Icon" class="icon">
+        <p><strong>Sustainability Scoring:</strong> Composite metrics combining consumption efficiency and SDG compliance</p>
+      </div>
+      
+      <div class="feature-item">
+        <img src="/api/placeholder/20/20" alt="Icon" class="icon">
+        <p><strong>Impact Measurement:</strong> Targeting 15% water reduction and 20% renewable energy increase</p>
+      </div>
+    </div>
+    
+    <!-- SDG Integration -->
+    <div class="sdg">
+      <h2>SDG INTEGRATION</h2>
+      <img src="/api/placeholder/300/120" alt="SDG Goals" class="section-img">
+      <p>Our Urban Sustainability Intelligence Platform directly supports UN SDGs:</p>
+      
+      <div class="sdg-icons">
+        <img src="/api/placeholder/50/50" alt="SDG 6" class="sdg-icon">
+        <img src="/api/placeholder/50/50" alt="SDG 7" class="sdg-icon">
+        <img src="/api/placeholder/50/50" alt="SDG 11" class="sdg-icon">
+        <img src="/api/placeholder/50/50" alt="SDG 13" class="sdg-icon">
+      </div>
+      
+      <table>
+        <tr>
+          <th>SDG</th>
+          <th>Goal Title</th>
+          <th>How Our Project Contributes</th>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Clean Water & Sanitation</td>
+          <td>Tracks water usage, detects wastage, simulates conservation</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Affordable & Clean Energy</td>
+          <td>Monitors energy consumption, supports solar adoption, forecasts demand</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Sustainable Cities & Communities</td>
+          <td>Enables urban resilience via data analytics and citizen engagement</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Climate Action</td>
+          <td>Provides emission metrics, climate insights, supports adaptive planning</td>
+        </tr>
+      </table>
+    </div>
+    
+    <!-- Conclusion -->
+    <div class="conclusion">
+      <h2>CONCLUSION</h2>
+      <img src="/api/placeholder/300/120" alt="Project Impact Visualization" class="section-img">
+      <p>This project exemplifies how innovative technology and data integration can transform urban infrastructure, leading to smarter, more sustainable cities:</p>
+      <ul>
+        <li>Scalable, data-driven approach addressing water and energy challenges in Bangalore</li>
+        <li>Targets a 30% reduction in water wastage and a 25% improvement in energy efficiency</li>
+        <li>Employs advanced analytics through IoT, machine learning, and geospatial mapping</li>
+        <li>Delivers real-time visualization and interactive dashboards for diverse stakeholders</li>
+        <li>Provides a replicable model for sustainable urban solutions in other smart cities</li>
+        <li>Aligns with key SDGs, promoting clean water, clean energy, sustainable cities, and climate action</li>
+      </ul>
+      
+      <p>Our final goal is to transform urban infrastructure using data-driven innovation to build smarter, more sustainable cities.</p>
+      
+      <div class="demo-link">
+        Explore our demo at: https://bescom-bwssb.vercel.app/
+      </div>
+    </div>
+    
+    <!-- Research Resources -->
+    <div class="resources">
+      <h2>RESEARCH RESOURCES</h2>
+      <img src="/api/placeholder/300/120" alt="Research Materials" class="section-img">
+      <table>
+        <tr>
+          <th>Resource Type</th>
+          <th>Focus</th>
+        </tr>
+        <tr>
+          <td>Geckoboard</td>
+          <td>Visual KPI tracking</td>
+        </tr>
+        <tr>
+          <td>Asia-Pacific Tool</td>
+          <td>Localization strategies</td>
+        </tr>
+        <tr>
+          <td>India PIB</td>
+          <td>Policy implementation</td>
+        </tr>
+        <tr>
+          <td>Glynt</td>
+          <td>AI extraction tools</td>
+        </tr>
+        <tr>
+          <td>Goal Tracker</td>
+          <td>Interactive SDG tracking</td>
+        </tr>
+        <tr>
+          <td>UN Statistics</td>
+          <td>SDG indicators</td>
+        </tr>
+        <tr>
+          <td>New Relic</td>
+          <td>Real-time monitoring</td>
+        </tr>
+        <tr>
+          <td>Green Developer</td>
+          <td>Code efficiency metrics</td>
+        </tr>
+        <tr>
+          <td>SoPact</td>
+          <td>Target-indicator mapping</td>
+        </tr>
+        <tr>
+          <td>SDG Indicators</td>
+          <td>Official metrics list</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
